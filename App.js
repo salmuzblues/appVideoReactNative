@@ -7,9 +7,11 @@
  * @lint-ignore-every XPLATJSCOPYRIGHT1
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 // Importamos el componente Home
-import {Platform, StyleSheet, Text, View, Image} from 'react-native';
+import Home from './src/screens/containers/home';
+import SuggestionList from './src/videos/containers/suggestion-list';
+import { Platform, StyleSheet, Text, View, Image } from 'react-native';
 
 /* const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,21 +21,41 @@ import {Platform, StyleSheet, Text, View, Image} from 'react-native';
 }); */
 
 type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-       {/*  <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Image 
-        source={ require('./assets/logo.png') } 
-        style={{ width:250, height: 80 }}
-        />
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text> */}
-      </View>
-    );
-  }
+export default class App extends Component < Props > {
+    render() {
+        return ( 
+        <Home>
+          <Text>header</Text>
+          <Text>buscador</Text>
+          <Text>categorias</Text>
+          <SuggestionList/>
+        </Home> 
+        );
+
+
+
+
+
+
+        // return ( <
+        //     View style = { styles.container } > {
+        //         /*  <Text style={styles.welcome}>Welcome to React Native!</Text>
+        //                 <Image 
+        //                 source={ require('./assets/logo.png') } 
+        //                 style={{ width:250, height: 80 }}
+        //                 />
+        //                 <Text style={styles.instructions}>To get started, edit App.js</Text>
+        //                 <Text style={styles.instructions}>{instructions}</Text> */
+        //     } <
+        //     /View>
+        //);
+    }
 }
+
+
+
+
+ 
 
 /* const styles = StyleSheet.create({
   container: {
@@ -42,12 +64,12 @@ export default class App extends Component<Props> {
     alignItems: 'center',
     backgroundColor: 'blue',
     /* if you want to select diferent colors so much for IOS an Android */
-    /* 
-     backgroundColor: Platform.select({
-      ios: 'green', 
-      android: 'red',
-     })
-    */
+/* 
+ backgroundColor: Platform.select({
+  ios: 'green', 
+  android: 'red',
+ })
+*/
 /*   },
   welcome: {
     fontSize: 20,
@@ -59,4 +81,4 @@ export default class App extends Component<Props> {
     color: '#333333',
     marginBottom: 5,
   },
-}); */ 
+}); */
