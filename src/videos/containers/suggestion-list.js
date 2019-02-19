@@ -3,25 +3,32 @@ import {
     FlatList,
     Text
 } from 'react-native'; 
+// Importando el Layout suggestion-list
+// el nombre de Layout puede ser cualquiera, pero se recomienda Layout 
+import Layout from '../components/suggestion-list-layout'; 
+// Importando el component Empty 
+import Empty from '../components/empty';
 class SuggestionList extends Component {
+// creamos una funcion 
+renderEmpty = () => <Empty text="No hay sugerencias"/>
 render() {
     const list  = [
-        {
-            key: '1',
-            title: 'leo', 
-        }, 
-        {
-            key: '2', 
-            title: 'nidas'
-        }
+     
     ]
 
     // return an array 
     return (
-        <FlatList 
-        data={list}   
-        renderItem={({ item }) => <Text>{ item.title }</Text>}
-        />
+        <Layout  title="Recomendado para ti">
+            <FlatList 
+            // data and renderItem are properties from Flatlist   
+            data={list}   
+            // a component to say that there is not element in list
+            ListEmptyComponent={this.renderEmpty} 
+            renderItem={({ item }) => <Text>{ item.title }</Text>}
+             />
+        </Layout>
+
+      
     )
 
 }
