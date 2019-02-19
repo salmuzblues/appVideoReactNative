@@ -7,11 +7,19 @@ import {
 
 function Empty (props) {
 return (
-   <View>
-       <Text>{props.text}</Text>
+   <View style={styles.container}>
+       <Text style={styles.text}>{props.text}</Text>
    </View>  
 )
-
 }
 
+// vamos a darle estilos para el component Empty 
+const styles = StyleSheet.create({
+    container:{
+        padding: 10, 
+    }, 
+    text: {
+        fontSize: 16
+    }
+})
 export default Empty; 

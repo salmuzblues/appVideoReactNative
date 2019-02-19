@@ -10,10 +10,17 @@ import Layout from '../components/suggestion-list-layout';
 import Empty from '../components/empty';
 class SuggestionList extends Component {
 // creamos una funcion 
-renderEmpty = () => <Empty text="No hay sugerencias"/>
+renderEmpty = () => <Empty text="No hay sugerencias :("/>
 render() {
     const list  = [
-     
+        /* {
+            key: '1',
+            title: 'Titulo', 
+        }, 
+        {
+            key: '2', 
+            title: 'Otro Titulo'
+        } */
     ]
 
     // return an array 
