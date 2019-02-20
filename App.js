@@ -1,4 +1,4 @@
-/**
+  /**
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
@@ -11,6 +11,7 @@ import React, { Component } from 'react';
 // Importamos el componente Home
 import Home from './src/screens/containers/home';
 import SuggestionList from './src/videos/containers/suggestion-list';
+import API from './utils/api'; 
 import { Platform, StyleSheet, Text, View, Image } from 'react-native';
 
 /* const instructions = Platform.select({
@@ -22,6 +23,10 @@ import { Platform, StyleSheet, Text, View, Image } from 'react-native';
 
 type Props = {};
 export default class App extends Component < Props > {
+    async componentDidMount(){
+      const movies = await API.getSuggestion(10); 
+      console.log(movies); 
+    }
     render() {
         return ( 
         <Home>
