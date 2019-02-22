@@ -10,6 +10,15 @@ class Api {
      console.log(data); 
      return data.movies;  
  }
+ async getMovies(){
+    // calling the query from the api by id  
+    const query= await fetch(`${BASE_API}list_movies.json`); 
+    // this query is going to retrieve a method JSON 
+    const { data }= await query.json();  // Aqui se pone { } para poder obtener objetos del data 
+    console.log(data); 
+    return data.movies;  
+}
+
 }
 
 export default new Api(); 

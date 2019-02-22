@@ -14,17 +14,19 @@ function Suggestion (props) {
             <View style={styles.left}>
                 <Image 
                 style={styles.cover}
-                source={require('../../../assets/logo.png')}
+                source={{
+                    uri: props.medium_cover_image
+                }}
                 /> 
                 <View style={styles.gender}>
-                    <Text style={styles.genderText}>Ciencia Ficción</Text>
+                    <Text style={styles.genderText}>{props.genres[0]}</Text>
                 </View>    
             </View>
             {/* this is another colum  */}
             <View style={styles.right}>
-                <Text style={styles.title}> Back to the Future</Text>
-                <Text style={styles.year}> 1985 </Text>
-                <Text style={styles.rating}> 5 estrellas </Text>
+                <Text style={styles.title}>{props.title}</Text>
+                <Text style={styles.year}>{props.year} </Text>
+                <Text style={styles.rating}>{props.rating} </Text>
             </View>
         </View>
     )

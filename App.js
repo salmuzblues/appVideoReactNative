@@ -12,6 +12,7 @@ import React, { Component } from 'react';
 import Home from './src/screens/containers/home';
 import SuggestionList from './src/videos/containers/suggestion-list';
 import API from './utils/api'; 
+import CategoryList from './src/videos/containers/category-list.js';
 import { Platform, StyleSheet, Text, View, Image } from 'react-native';
 
 /* const instructions = Platform.select({
@@ -23,17 +24,33 @@ import { Platform, StyleSheet, Text, View, Image } from 'react-native';
 
 type Props = {};
 export default class App extends Component < Props > {
-    async componentDidMount(){
-      const movies = await API.getSuggestion(10); 
-      console.log(movies); 
-    }
+  state = {
+    suggestionList: [],
+    categoryList: [],
+  }
+  async componentDidMount() {
+    const movies = await API.getSuggestion(10);
+    const categories = await API.getMovies();
+    console.log(movies);
+    console.log(categories);
+    this.setState({
+      suggestionList: movies,
+      categoryList: categories,
+    })
+  }
     render() {
         return ( 
         <Home>
           <Text>header</Text>
-          <Text>buscador</Text>
-          <Text>categorias</Text>
-          <SuggestionList/>
+         {/*  <Player /> */}
+        <Text>buscador</Text>
+        <Text>categorías</Text>
+        <CategoryList
+          list={this.state.categoryList}
+        />
+        <SuggestionList
+          list={this.state.suggestionList}
+        />
         </Home> 
         );
 
