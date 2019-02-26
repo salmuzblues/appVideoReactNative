@@ -9,11 +9,15 @@
 
 import React, { Component } from 'react';
 // Importamos el componente Home
-import Home from './src/screens/containers/home';
-import SuggestionList from './src/videos/containers/suggestion-list';
-import API from './utils/api'; 
-import CategoryList from './src/videos/containers/category-list.js';
+
+
+
 import { Platform, StyleSheet, Text, View, Image } from 'react-native';
+import { Provider } from 'react-redux'; 
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor} from './utils/store'; 
+import Loading from './src/sections/loading'; 
+import AppLayout from './src/app'; 
 
 /* const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -24,41 +28,31 @@ import { Platform, StyleSheet, Text, View, Image } from 'react-native';
 
 type Props = {};
 export default class App extends Component < Props > {
-  state = {
-    suggestionList: [],
-    categoryList: [],
-  }
-  async componentDidMount() {
-    const movies = await API.getSuggestion(10);
-    const categories = await API.getMovies();
-    console.log(movies);
-    console.log(categories);
-    this.setState({
-      suggestionList: movies,
-      categoryList: categories,
-    })
-  }
+  
     render() {
         return ( 
-        <Home>
-          <Text>header</Text>
-         {/*  <Player /> */}
-        <Text>buscador</Text>
-        <Text>categorías</Text>
-        <CategoryList
-          list={this.state.categoryList}
-        />
-        <SuggestionList
-          list={this.state.suggestionList}
-        />
-        </Home> 
+          <Provider
+           store={store} >
+              <PersistGate
+                loading={<Loading />}
+                persistor={persistor}
+                >
+               <AppLayout />
+
+              </PersistGate>
+               
+          </Provider>
         );
+        /* 
+           Note: 
+          El **Store **es donde almacenamos el estado actual de la aplicación.
+          Los **Dispatch **se encargan de disparar las acciones que modificarán el state de la aplicación.
+          Los **Actions **modifican el state de la aplicación dependiendo de la acción disparada.
+          Usamos los **mapStateToProps **junto a **connect **para avisar a nuestros componentes de que se han producido cambios en el state.
 
-
-
-
-
-
+        
+        
+        */
         // return ( <
         //     View style = { styles.container } > {
         //         /*  <Text style={styles.welcome}>Welcome to React Native!</Text>

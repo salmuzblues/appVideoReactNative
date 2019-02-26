@@ -11,7 +11,13 @@ import Empty from '../components/empty';
 import VerticalSeparator from '../../sections/vertical-separator';
 // import suggestion pictures of movies and information 
 import Suggestion from '../components/suggestion';
+import { connect } from 'react-redux'; 
 
+function mapStateToProps (state) {
+    return{
+        list: state.suggestionList 
+    }
+}
 class SuggestionList extends Component {
 // creamos funciones 
 keyExtractor = (item) => item.id.toString(); // esto es para poder eliminar el miss Key menasje que sale en el emulador. 
@@ -45,4 +51,4 @@ renderItem = ({item}) => {
     }
 }
 
-export default SuggestionList;
+export default connect(mapStateToProps)(SuggestionList);

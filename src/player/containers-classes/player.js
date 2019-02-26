@@ -10,6 +10,8 @@ import ControlLayout from '../components/control-layout';
 import PlayPause  from '../components/play-pause';
 
 class Player extends Component{
+
+        
     // we are setting a state = true, because our video is going to start charging. 
     state = {
         loading: true,
