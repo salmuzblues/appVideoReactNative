@@ -18,20 +18,31 @@ function mapStateToProps (state) {
         list: state.suggestionList 
     }
 }
+
 class SuggestionList extends Component {
 // creamos funciones 
 keyExtractor = (item) => item.id.toString(); // esto es para poder eliminar el miss Key menasje que sale en el emulador. 
 renderEmpty = () => <Empty text="No hay sugerencias :("/>
+viewMovie = (item) => {
+     this.props.dispatch({
+         type: 'SET_SELECTED_MOVIE',
+         payload: {
+             movie: item
+         }
+     })
+}
 itemSeparator = () => <VerticalSeparator /> // aqui le puedes pasar a (props.color)  like this color='red'
 renderItem = ({item}) => {
     return (
         /* split operator */
-        <Suggestion {...item}/>
+        <Suggestion 
+            {...item}
+            onPress={()=> { this.viewMovie(item) }}
+        />
     )
 }
 
     render() {
-
         // return an array 
         return (
             <Layout  title="Recomendado para ti">

@@ -11,8 +11,9 @@ import Home from './screens/containers/home';
 import SuggestionList from './videos/containers/suggestion-list';
 import CategoryList from './videos/containers/category-list.js';
 import API from '../utils/api'; 
- 
-
+import Movie from './screens/containers/movie';  
+import Header from './sections/header';
+import Close from './sections/close';
 
  class AppLayout extends Component {
    
@@ -44,17 +45,28 @@ import API from '../utils/api';
     // estas acciones voy a redirigir a videos-reduc 
 
     render() {
-        return (
-            <Home>
-                <Text>header</Text>
-                  {/*  <Player /> */}
-                <Text>buscador</Text>
-                <CategoryList />
-                <SuggestionList/>
-              </Home>
-        )
+      if(this.props.selectedMovie){
+         return <Movie />
+      }
+      return (       
+        <Home>
+          <Header> 
+            <Close />
+          </Header>
+          <Text>buscador</Text>
+          <CategoryList />
+          <SuggestionList />
+        </Home>
+      )
     }
  }
 
 
- export default connect(null)(AppLayout); 
+ //esto es para que este disponible dentro de mi componente 
+  function mapStateToProps (state) {
+    return {
+      selectedMovie: state.selectedMovie
+    }
+  }
+
+ export default connect(mapStateToProps)(AppLayout); 

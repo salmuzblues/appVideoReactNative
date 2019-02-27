@@ -3,15 +3,19 @@ import {
     View, 
     Image, 
     Text,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity
 } from 'react-native'; 
 
 function Suggestion (props) {
     /* Esto seria la Fila, el Padre*/
     return (
-        <View style={styles.container}> 
-             {/* this is a colum*/}
-            <View style={styles.left}>
+        <TouchableOpacity
+             onPress={props.on}
+            >
+            <View style={styles.container}> 
+              {/* this is a colum*/}
+             <View style={styles.left}>
                 <Image 
                 style={styles.cover}
                 source={{
@@ -21,14 +25,16 @@ function Suggestion (props) {
                 <View style={styles.gender}>
                     <Text style={styles.genderText}>{props.genres[0]}</Text>
                 </View>    
+             </View>
+             {/* this is another colum  */}
+                <View style={styles.right}>
+                    <Text style={styles.title}>{props.title}</Text>
+                    <Text style={styles.year}>{props.year} </Text>
+                    <Text style={styles.rating}>{props.rating} </Text>
+                </View>
             </View>
-            {/* this is another colum  */}
-            <View style={styles.right}>
-                <Text style={styles.title}>{props.title}</Text>
-                <Text style={styles.year}>{props.year} </Text>
-                <Text style={styles.rating}>{props.rating} </Text>
-            </View>
-        </View>
+        </TouchableOpacity>
+        
     )
 } 
 

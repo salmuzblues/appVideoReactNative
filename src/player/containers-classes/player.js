@@ -72,7 +72,7 @@ class Player extends Component{
 const styles = StyleSheet.create({
     video: 
     {
-        positon: 'absolute',
+        position: 'absolute',
         left: 0,
         right: 0,
         bottom: 0,
