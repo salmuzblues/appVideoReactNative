@@ -11,7 +11,7 @@ function Close (props) {
         <TouchableOpacity
             onPress = {props.onPress}
             style = {styles.container}
-            >
+        >
             <Text style={styles.button}>X</Text>
         </TouchableOpacity>
     );

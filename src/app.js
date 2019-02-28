@@ -14,7 +14,7 @@ import API from '../utils/api';
 import Movie from './screens/containers/movie';  
 import Header from './sections/header';
 import Close from './sections/close';
-
+import Search from './sections/search'
  class AppLayout extends Component {
    
     async componentDidMount() {
@@ -46,18 +46,20 @@ import Close from './sections/close';
 
     render() {
       if(this.props.selectedMovie){
-         return <Movie />
-      }
-      return (       
-        <Home>
-          <Header> 
-            <Close />
-          </Header>
-          <Text>buscador</Text>
-          <CategoryList />
-          <SuggestionList />
-        </Home>
-      )
+         return  <Movie /> 
+      } 
+        return (       
+          <Home>
+            <Header> 
+              <Close />
+            </Header>
+            <Search /> 
+            <CategoryList />
+            <SuggestionList />
+          </Home>
+        )
+      
+      
     }
  }
 

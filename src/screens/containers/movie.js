@@ -1,8 +1,12 @@
-import React, { Component }  from 'react'; 
+import React, { Component }  from 'react';
+import {
+ Text
+} from 'react-native';
 import MovieLayout from '../components/movie-layout';
 import Player from '../../player/containers-classes/player'; 
 import Header from '../../sections/header';
-import Close from '../../sections/close'; 
+import Close from '../../sections/close';
+import Details from '../../videos/components/details';  
 import { connect } from 'react-redux';
 class Movie extends Component {
 // this is an acttion and it will be connected to our store. 
@@ -22,11 +26,17 @@ class Movie extends Component {
                         onPress={this.closeVideo}
                     />
                 </Header>
-                {/*  <Player /> */}
+                <Text> PLAYER </Text>
+                {/* Vamos a enviar información */}
+                <Details {...this.props.movie} /> 
             </MovieLayout>
         )
     }
 }
 
-
-export default connect()(Movie); 
+function mapStateToProps (state){
+return {
+    movie: state.selectedMovie
+}
+}
+export default connect(mapStateToProps)(Movie); 
