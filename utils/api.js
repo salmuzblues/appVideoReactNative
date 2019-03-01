@@ -19,6 +19,17 @@ class Api {
     return data.movies;  
 }
 
+async searchMovie(title) {
+    
+// calling the query from the api by id  
+const query= await fetch(`${BASE_API}list_movies.json?limit=1&sort_by=rating&query_term=${title}`); 
+// this query is going to retrieve a method JSON 
+const { data }= await query.json();  // Aqui se pone { } para poder obtener objetos del data 
+console.log(data); 
+return data.movies; 
+    
+}
+
 }
 
 export default new Api(); 
